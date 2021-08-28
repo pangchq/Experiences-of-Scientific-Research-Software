@@ -11,11 +11,11 @@ CHG  CHGCAR  CONTCAR  DOSCAR  EIGENVAL  IBZKPT  INCAR  IS.xsd  KPOINTS  OSZICAR 
 ```
 2. mkdir TS && cd TS
 生成中间结构文件有两种方法, 推荐非线性方法:  
-* 线性  
+* 线性插值  
 ```
 nebmake.pl ../IS/CONTCAR ../FS/CONTCAR N
 ```
-* 非线性  
+* 非线性插值  
 ```
 python idpp.py N ../IS/CONTCAR ../FS/CONTCAR
 ```
