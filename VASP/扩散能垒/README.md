@@ -45,7 +45,7 @@ SPRING   = -5                  # 弹簧力常数，用-5默认值即可
 ```
 
 ```
-nebresult.pl命令执行了nebbarrier.pl, nebspline.pl, nebef.pl, nebmovie.pl, nebjmovie.pl, nebconverge.pl等, 在TS路径下生成了很多文件, 其中mep.eps是以dist.pl距离为横坐标，能量为纵坐标画出的能势垒图, 如下图所示:  
+nebresult.pl命令执行了nebbarrier.pl, nebspline.pl, nebef.pl, nebmovie.pl, nebjmovie.pl, nebconverge.pl等, 在TS路径下生成了很多文件, 其中mep.eps是以迁移距离为横坐标，能量为纵坐标画出的能势垒图, 如下图所示:  
 这里给个图片路径  
 生成的vaspgr文件夹内是各个插点结构的收敛图, 如下图所示:  
 这里给个图片路径  
