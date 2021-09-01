@@ -14,8 +14,11 @@ pipeline.modifiers.append(SelectTypeModifier(property = 'Particle Type', types =
 pipeline.modifiers.append(DeleteSelectedModifier())
 pipeline.modifiers.append(ExpressionSelectionModifier(expression = '((Position.X - 120)^2+(Position.Y - 120)^2+(Position.Z - 120)^2)^(1/2) > 60'))
 
-for frame in range(pipeline.source.num_frames):
-    data = pipeline.compute(frame)
-    print(data.attributes['SelectExpression.num_selected'])
-
+llist = []
+with open('evaporation.dat', 'w') as f:
+    for frame in range(pipeline.source.num_frames):
+        data = pipeline.compute(frame)
+        tmp = data.attributes['SelectExpression.num_selected'] / 3
+        llist.append("{:.3f}".format(tmp)+'\n')
+    f.write(''.join(llist))
 ```
