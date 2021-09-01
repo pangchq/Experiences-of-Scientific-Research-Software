@@ -22,3 +22,4 @@ with open('evaporation.dat', 'w') as f:
         llist.append("{:.3f}".format(tmp)+'\n')
     f.write(''.join(llist))
 ```
+详细参考https://www.ovito.org/docs/current/python/index.html
