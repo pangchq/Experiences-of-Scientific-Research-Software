@@ -21,7 +21,7 @@ pipeline.modifiers.append(DeleteSelectedModifier())
 pipeline.modifiers.append(ExpressionSelectionModifier(expression = '((Position.X - 120)^2+(Position.Y - 120)^2+(Position.Z - 120)^2)^(1/2) < 60'))
 
 llist = []
-output_file = 'evaporation_'+dump_file.strip().split('.')[2]+'.dat'
+output_file = 'evaporation_'+dump_file.strip().split('.')[-1]+'.dat'
 with open(output_file, 'w') as f:
     for frame in range(pipeline.source.num_frames):
         data = pipeline.compute(frame)
