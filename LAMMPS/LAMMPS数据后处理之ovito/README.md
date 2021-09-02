@@ -6,20 +6,27 @@ ovito支持多平台，还有python API拓展。下面是一个调用ovito的pyt
 
 from ovito.io import import_file
 from ovito.modifiers import SelectTypeModifier, DeleteSelectedModifier, ExpressionSelectionModifier
+import sys
 
-pipeline = import_file("dump.without_electric_efiled")
+dump_file = sys.argv[1]
+
+timestep = 2 # fs
+#dumpfreq = 1000 # dump frequency
+
+pipeline = import_file(dump_file)
 print(str(pipeline.source.num_frames) + ' frames')
 
 pipeline.modifiers.append(SelectTypeModifier(property = 'Particle Type', types = {'Type 3'}))
 pipeline.modifiers.append(DeleteSelectedModifier())
-pipeline.modifiers.append(ExpressionSelectionModifier(expression = '((Position.X - 120)^2+(Position.Y - 120)^2+(Position.Z - 120)^2)^(1/2) > 60'))
+pipeline.modifiers.append(ExpressionSelectionModifier(expression = '((Position.X - 120)^2+(Position.Y - 120)^2+(Position.Z - 120)^2)^(1/2) < 60'))
 
 llist = []
-with open('evaporation.dat', 'w') as f:
+output_file = 'evaporation_'+dump_file.strip().split('.')[2]+'.dat'
+with open(output_file, 'w') as f:
     for frame in range(pipeline.source.num_frames):
         data = pipeline.compute(frame)
         tmp = data.attributes['SelectExpression.num_selected'] / 3
-        llist.append("{:.3f}".format(tmp)+'\n')
+        llist.append(str(frame*timestep) + " {:.3f}".format(tmp)+'\n')
     f.write(''.join(llist))
 ```
 详细参考https://www.ovito.org/docs/current/python/index.html
