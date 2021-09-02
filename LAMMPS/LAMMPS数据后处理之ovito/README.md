@@ -1,6 +1,6 @@
 ## LAMMPS数据后处理之ovito  
 **LAMMPS程序虽然自带一些分析命令，比如compute rdf、compute adf等，然而很多时候我们关心的性质或信息，LAMMPS没有相应的命令，这种情况下我们只能自己写脚本进行分析。一般情况，我们会避免“重复造轮子”，站在“巨人的肩膀上”。今天为大家介绍一款LAMMPS数据后处理软件——ovito（官网https://www.ovito.org/）。**  
-ovito支持多平台，还有python API拓展。下面是一个调用ovito的python脚本  
+ovito支持多平台，还有python API拓展。下面是一个调用ovito的python脚本, 统计蒸发的水分子数量  
 ```
 #! bin/env python
 
